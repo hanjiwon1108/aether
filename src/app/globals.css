@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  
+  --color-primary: #00f0ff;
+  --color-primary-foreground: #000000;
+  
+  --color-secondary: #7000ff;
+  --color-secondary-foreground: #ffffff;
+  
+  --color-accent: #ff0055;
+  --color-accent-foreground: #ffffff;
+  
+  --color-muted: #1a1a1a;
+  --color-muted-foreground: #a1a1aa;
+  
+  --color-border: #333333;
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-display), sans-serif;
+
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-fade-up: fade-up 0.5s ease-out forwards;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes fade-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes glow {
+    0% { box-shadow: 0 0 5px var(--color-primary), 0 0 10px var(--color-primary); }
+    100% { box-shadow: 0 0 20px var(--color-primary), 0 0 40px var(--color-primary); }
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
+
+/* Lenis Smooth Scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
