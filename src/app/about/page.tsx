@@ -19,7 +19,7 @@ export default function AboutPage() {
               WHO <span className="text-accent">WE ARE</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
-              Aether is not just an agency; it's a collective of visionaries, dreamers, and doers. We believe that the future belongs to those who dare to imagine it.
+              Aether is not just an agency; it&apos;s a collective of visionaries, dreamers, and doers. We believe that the future belongs to those who dare to imagine it.
             </p>
             <p className="text-xl text-muted-foreground leading-relaxed">
               Founded in 2024, we bridge the gap between art and technology, creating digital experiences that are not only functional but emotionally resonant.
