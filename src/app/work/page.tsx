@@ -81,7 +81,7 @@ export default function WorkPage() {
         layout
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
       >
-        {filteredProjects.map((project, index) => (
+        {filteredProjects.map((project) => (
           <motion.div
             layout
             key={project.title}
