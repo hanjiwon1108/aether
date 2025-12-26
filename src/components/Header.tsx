@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 const navLinks = [
   { name: "Services", href: "/services" },
@@ -44,22 +45,22 @@ export default function Header() {
       >
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-primary rounded-full animate-pulse" />
-          <a href="/" className="text-xl font-bold font-display tracking-wider">AETHER</a>
+          <Link href="/" className="text-xl font-bold font-display tracking-wider">AETHER</Link>
         </div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <Button variant="outline" className="px-6 py-2 text-sm">
-            Let's Talk
+            Let&apos;s Talk
           </Button>
         </nav>
 
@@ -88,14 +89,14 @@ export default function Header() {
 
         <nav className="flex flex-col items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               className="text-4xl font-bold font-display hover:text-primary transition-colors"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <Button className="mt-8" onClick={() => setMobileMenuOpen(false)}>
             Start Project
