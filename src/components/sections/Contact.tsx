@@ -28,13 +28,13 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-5xl md:text-7xl font-bold font-display mb-6">
-            READY TO <br />
+            LET&apos;S <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               LAUNCH?
             </span>
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-md">
-            Let's build something extraordinary together. Tell us about your project.
+            Let&apos;s build something extraordinary together. Tell us about your project.
           </p>
           
           <div className="flex gap-4">
