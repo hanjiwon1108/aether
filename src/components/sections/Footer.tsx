@@ -1,7 +1,6 @@
 "use client";
 
 import Button from "@/components/ui/Button";
-import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
@@ -10,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
           <div className="mb-12 md:mb-0">
             <h2 className="text-6xl md:text-8xl font-bold font-display leading-none mb-6">
-              LET'S <br />
+              LET&apos;S <br />
               COLLABORATE
             </h2>
             <Button variant="primary">Get in Touch</Button>
