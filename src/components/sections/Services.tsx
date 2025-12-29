@@ -48,7 +48,7 @@ export default function Services() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
         {services.map((service, index) => (
           <motion.div
             key={index}
@@ -58,7 +58,7 @@ export default function Services() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className={cn(service.className, "h-full")}
           >
-            <Card className="h-full p-8 flex flex-col justify-between hover:border-primary/50 transition-colors duration-500">
+            <Card className="p-8 flex flex-col justify-between hover:border-primary/50 transition-colors duration-500">
               <div>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-primary">
                   <service.icon size={24} />
@@ -70,6 +70,7 @@ export default function Services() {
           </motion.div>
         ))}
       </div>
+
     </section>
   );
 }
