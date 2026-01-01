@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
-import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
-import { cn } from "@/lib/utils";
+import SmoothScroll from "@/shared/ui/SmoothScroll";
+import CustomCursor from "@/shared/ui/CustomCursor";
+import { cn } from "@/shared/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Futuristic Creative Agency",
 };
 
-import Header from "@/components/Header";
+import Header from "@/widgets/Header/ui/Header";
 
 export default function RootLayout({
   children,
