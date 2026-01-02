@@ -1,9 +1,9 @@
-import Hero from "@/components/sections/Hero";
-import Services from "@/components/sections/Services";
-import Showcase from "@/components/sections/Showcase";
-import Testimonials from "@/components/sections/Testimonials";
-import Contact from "@/components/sections/Contact";
-import Footer from "@/components/sections/Footer";
+import Hero from "@/widgets/Hero/ui/Hero";
+import Services from "@/widgets/Services/ui/Services";
+import Showcase from "@/widgets/Showcase/ui/Showcase";
+import Testimonials from "@/widgets/Testimonials/ui/Testimonials";
+import Contact from "@/widgets/Contact/ui/Contact";
+import Footer from "@/widgets/Footer/ui/Footer";
 
 export default function Home() {
   return (
