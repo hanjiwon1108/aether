@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Contact from "@/components/sections/Contact";
+import Contact from "@/widgets/Contact/ui/Contact";
 import Image from "next/image";
 
 export default function AboutPage() {
