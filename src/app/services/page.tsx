@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
+import Card from "@/shared/ui/Card";
+import Button from "@/shared/ui/Button";
 import { Code2, Palette, Rocket, Zap, Check } from "lucide-react";
 
 const services = [
