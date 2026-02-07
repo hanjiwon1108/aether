@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import QueryProvider from "@/providers/QueryProvider";
+import QueryProvider from "@/app_layer/providers/QueryProvider";
 import SmoothScroll from "@/shared/ui/SmoothScroll";
 import CustomCursor from "@/shared/ui/CustomCursor";
 import { cn } from "@/shared/lib/utils";
