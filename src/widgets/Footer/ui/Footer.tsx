@@ -1,36 +1,93 @@
 "use client";
 
 import Button from "@/shared/ui/Button";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function Footer() {
-  return (
-    <footer className="relative py-24 px-4 md:px-8 bg-black overflow-hidden">
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
-          <div className="mb-12 md:mb-0">
-            <h2 className="text-6xl md:text-8xl font-bold font-display leading-none mb-6">
-              LET&apos;S <br />
-              COLLABORATE
-            </h2>
-            <Button variant="primary">Get in Touch</Button>
-          </div>
-          
-          <div className="flex flex-col gap-4 text-lg text-muted-foreground">
-            <a href="#" className="hover:text-primary transition-colors">Instagram</a>
-            <a href="#" className="hover:text-primary transition-colors">Twitter</a>
-            <a href="#" className="hover:text-primary transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-primary transition-colors">Email</a>
-          </div>
-        </div>
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>&copy; 2024 Aether Agency. All rights reserved.</p>
-          <p>Designed by Aether AI</p>
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  return (
+    <footer
+      ref={ref}
+      className="relative py-32 px-4 md:px-8 bg-black overflow-hidden mt-20"
+    >
+      <motion.div
+        style={{ scale, y, opacity }}
+        className="max-w-7xl mx-auto relative z-10 flex flex-col items-center justify-center text-center"
+      >
+        <motion.h2 className="text-[10vw] font-black font-display leading-[0.85] mb-12 tracking-tighter">
+          LET&apos;S <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-t from-primary to-white">
+            COLLABORATE
+          </span>
+        </motion.h2>
+
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="mb-24"
+        >
+          <Button
+            variant="primary"
+            className="text-2xl px-12 py-6 rounded-full shadow-[0_0_40px_rgba(var(--primary),0.5)]"
+          >
+            Get in Touch
+          </Button>
+        </motion.div>
+
+        <div className="flex flex-col md:flex-row justify-between w-full items-center gap-8 border-t border-white/10 pt-12 text-muted-foreground text-lg">
+          <div className="flex gap-8">
+            <motion.a
+              whileHover={{ y: -5, color: "white" }}
+              href="#"
+              className="hover:text-primary transition-colors"
+            >
+              Instagram
+            </motion.a>
+            <motion.a
+              whileHover={{ y: -5, color: "white" }}
+              href="#"
+              className="hover:text-primary transition-colors"
+            >
+              Twitter
+            </motion.a>
+            <motion.a
+              whileHover={{ y: -5, color: "white" }}
+              href="#"
+              className="hover:text-primary transition-colors"
+            >
+              LinkedIn
+            </motion.a>
+          </div>
+          <p className="text-sm">
+            &copy; 2024 Aether Agency. All rights reserved.
+          </p>
+          <div className="relative group cursor-pointer">
+            <p className="text-sm">
+              Designed by{" "}
+              <span className="text-white font-bold group-hover:text-primary transition-colors">
+                Aether AI
+              </span>
+            </p>
+            <motion.div className="h-px bg-primary w-0 group-hover:w-full transition-all duration-300" />
+          </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Background Glow */}
-      <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
+      <motion.div
+        style={{ opacity: scrollYProgress }}
+        className="absolute bottom-0 left-0 w-full h-[800px] bg-gradient-to-t from-primary/20 via-primary/5 to-transparent pointer-events-none mix-blend-screen"
+      />
     </footer>
   );
 }
