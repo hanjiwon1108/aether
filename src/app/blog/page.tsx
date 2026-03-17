@@ -81,7 +81,7 @@ export default function BlogPage() {
       >
         {posts.map((post) => (
           <motion.div key={post.slug} variants={itemVariants}>
-            <Link href={`#`} className="block group">
+            <Link href={`/blog/${post.slug}`} className="block group">
               <Card className="h-full overflow-hidden hover:border-accent/50 transition-colors duration-500 flex flex-col">
                 <div className="relative h-64 w-full overflow-hidden">
                   <Image
