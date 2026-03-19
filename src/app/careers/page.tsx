@@ -81,9 +81,11 @@ export default function CareersPage() {
                     <span>{job.location}</span>
                   </div>
                 </div>
-                <Button variant="outline" className="group-hover:bg-primary group-hover:text-black group-hover:border-primary">
-                  Apply Now <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
+                <a href={`mailto:careers@aether.com?subject=Application for ${job.title}`}>
+                  <Button variant="outline" className="group-hover:bg-primary group-hover:text-black group-hover:border-primary pointer-events-none">
+                    Apply Now <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </a>
               </Card>
             </motion.div>
           ))}
