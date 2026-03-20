@@ -6,6 +6,35 @@ import { Mail, Check } from "lucide-react";
 
 export default function NewsletterPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubscribe = async () => {
+    if (!email) return;
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await res.json();
+        setError(data.error || "Failed to subscribe");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <main className="pt-32 pb-24 px-4 md:px-8 flex items-center justify-center min-h-screen">
       <div className="text-center max-w-2xl w-full">
@@ -28,17 +57,25 @@ export default function NewsletterPage() {
         </motion.div>
 
         {!submitted ? (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="flex-grow bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-primary/60 text-lg"
-            />
-            <Button onClick={() => setSubmitted(true)} className="px-8 py-4 text-lg whitespace-nowrap">Subscribe</Button>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="flex flex-col gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={loading}
+                className="flex-grow bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/30 focus:outline-none focus:border-primary/60 text-lg disabled:opacity-50"
+              />
+              <Button onClick={handleSubscribe} disabled={loading} className="px-8 py-4 text-lg whitespace-nowrap">
+                {loading ? "Subscribing..." : "Subscribe"}
+              </Button>
+            </div>
+            {error && <p className="text-red-500 text-sm text-left pl-2">{error}</p>}
           </motion.div>
         ) : (
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring" }}
-            className="flex items-center justify-center gap-4 text-xl font-semibold text-green-400">
+            className="flex items-center justify-center gap-4 text-xl font-semibold text-primary">
             <Check className="w-8 h-8" />You&apos;re in! Welcome to the crew.
           </motion.div>
         )}
