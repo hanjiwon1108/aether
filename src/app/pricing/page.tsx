@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Card from "@/shared/ui/Card";
 import Button from "@/shared/ui/Button";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 const plans = [
   {
@@ -54,7 +55,9 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <Button variant={plan.featured ? "primary" : "outline"} className="w-full">{plan.cta}</Button>
+              <Link href="/contact" className="block w-full">
+                <Button variant={plan.featured ? "primary" : "outline"} className="w-full">{plan.cta}</Button>
+              </Link>
             </Card>
           </motion.div>
         ))}
