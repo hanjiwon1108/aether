@@ -45,7 +45,7 @@ export default function WorkDetailPage({ params }: { params: Promise<{ slug: str
             <span className="font-medium">2025</span>
           </div>
           <div className="ml-auto flex items-center">
-            <a href="#" className="inline-flex items-center hover:text-primary transition-colors">
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center hover:text-primary transition-colors">
               Visit Live Site <ExternalLink className="ml-2 w-4 h-4" />
             </a>
           </div>
