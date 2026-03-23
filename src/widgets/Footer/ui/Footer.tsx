@@ -3,6 +3,7 @@
 import Button from "@/shared/ui/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 export default function Footer() {
   const ref = useRef(null);
@@ -36,12 +37,14 @@ export default function Footer() {
           whileTap={{ scale: 0.95 }}
           className="mb-24"
         >
-          <Button
-            variant="primary"
-            className="text-2xl px-12 py-6 rounded-full shadow-[0_0_40px_rgba(var(--primary),0.5)]"
-          >
-            Get in Touch
-          </Button>
+          <Link href="/contact" className="block text-center">
+            <Button
+              variant="primary"
+              className="text-2xl px-12 py-6 rounded-full shadow-[0_0_40px_rgba(var(--primary),0.5)]"
+            >
+              Get in Touch
+            </Button>
+          </Link>
         </motion.div>
 
         <div className="flex flex-col md:flex-row justify-between w-full items-center gap-8 border-t border-white/10 pt-12 text-muted-foreground text-lg">
