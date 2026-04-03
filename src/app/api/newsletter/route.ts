@@ -1,30 +1,25 @@
-import { NextResponse } from "next/server";
+import {
+  createErrorResponse,
+  createSuccessResponse,
+  simulateDelay,
+} from "@/shared/api/server-utils";
 
 export async function POST(request: Request) {
   try {
     const data = await request.json();
 
     if (!data.email) {
-      return NextResponse.json(
-        { error: "Email is required" },
-        { status: 400 },
-      );
+      return createErrorResponse("Email is required", 400);
     }
 
     // Simulate database save or external API call delay
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await simulateDelay();
 
     console.log("New Newsletter Subscription:", data.email);
 
-    return NextResponse.json(
-      { success: true, message: "Subscription successful!" },
-      { status: 200 },
-    );
+    return createSuccessResponse("Subscription successful!");
   } catch (error) {
     console.error("Newsletter API Error:", error);
-    return NextResponse.json(
-      { error: "Failed to subscribe." },
-      { status: 500 },
-    );
+    return createErrorResponse("Failed to subscribe.", 500);
   }
 }
