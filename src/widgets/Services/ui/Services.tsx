@@ -1,6 +1,7 @@
 "use client";
 
 import Card from "@/shared/ui/Card";
+import { SectionHeader } from "@/shared/ui/SectionHeader";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Code2, Palette, Rocket, Zap } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
@@ -51,21 +52,16 @@ export default function Services() {
       ref={ref}
       className="py-24 px-4 md:px-8 max-w-7xl mx-auto relative perspective-1000 overflow-visible"
     >
-      <motion.div
+      <SectionHeader
         initial={{ opacity: 0, scale: 0.8, rotateX: -20 }}
         whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-        className="mb-16 text-center"
-      >
-        <h2 className="text-4xl md:text-6xl font-black font-display mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-secondary animate-gradient bg-[length:200%_auto]">
-          Our Expertise
-        </h2>
-        <p className="text-muted-foreground text-xl md:text-2xl max-w-3xl mx-auto drop-shadow-lg">
-          We combine unstoppable creativity and raw technology to deliver
-          exceptional digital masterpieces.
-        </p>
-      </motion.div>
+        title="Our Expertise"
+        titleClassName="md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-secondary animate-gradient bg-[length:200%_auto]"
+        subtitle="We combine unstoppable creativity and raw technology to deliver exceptional digital masterpieces."
+        subtitleClassName="text-xl md:text-2xl max-w-3xl drop-shadow-lg"
+      />
 
       <motion.div
         style={{ y }}
