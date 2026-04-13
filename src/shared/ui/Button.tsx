@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useMotionValue, useSpring, HTMLMotionProps } from "framer-motion";
 import { useRef, useState } from "react";
 import { cn } from "@/shared/lib/utils";
@@ -67,7 +69,7 @@ export default function Button({
       <span className="relative z-10">{children}</span>
       {variant === "primary" && (
         <motion.div
-          className="absolute inset-0 bg-white/20 blur-lg"
+          className="absolute inset-0 bg-white/20 blur-lg pointer-events-none"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: hovered ? 1.5 : 0, opacity: hovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
