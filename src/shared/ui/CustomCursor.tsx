@@ -14,15 +14,15 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
       setIsVisible(true);
     };
 
     const handleMouseDown = () => setIsVisible(true); 
     const handleMouseUp = () => setIsVisible(true);
 
-    window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("mousemove", moveCursor, { passive: true });
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
 
@@ -37,13 +37,13 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 border border-primary rounded-full pointer-events-none z-50 mix-blend-difference"
+      className="fixed top-0 left-0 w-8 h-8 border border-primary rounded-full pointer-events-none z-[9999] mix-blend-difference flex items-center justify-center translate-x-[-50%] translate-y-[-50%]"
       style={{
-        translateX: cursorXSpring,
-        translateY: cursorYSpring,
+        x: cursorXSpring,
+        y: cursorYSpring,
       }}
     >
-      <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2" />
+      <div className="w-1 h-1 bg-primary rounded-full" />
     </motion.div>
   );
 }
