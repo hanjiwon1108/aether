@@ -19,7 +19,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const scrollToContact = () => {
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
     setMobileMenuOpen(false);
     const element = document.getElementById("contact");
     if (element) {
